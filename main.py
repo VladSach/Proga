@@ -1,7 +1,8 @@
 class EndList:
 
+    # Инициализирует списка, а также самого длинного и короткого слов
     def __init__(self, list):
-        self.list = list
+        self.list = list  # Список изначальный
         self.longest_word = list.index(max(list, key=len))  # находит максимальное
         self.shortest_word = list.index(min(list, key=len))  # находит минимальное
 
@@ -9,18 +10,23 @@ class EndList:
         self.list[self.shortest_word], self.list[self.longest_word] = self.list[self.longest_word], self.list[self.shortest_word]
         return self.list
 
+    # Убирает неиспользуемый обьект
     def __del__(self):
-        print('список потерт')
+        pass
 
 
 class Line:
     # Инициализирует класс строки, с атрибутом самой этой строки
     def __init__(self, string=''):
-        self.line = string
+        self.line = string  # Убирает неиспользуемый обьект
 
     # Разбивает строку на слова и возвращает массив слов
     def splitting(self):
         return self.line.split()
+
+    # Убирает неиспользуемый обьект
+    def __del__(self):
+        pass
 
 
 print("Работу выполнил Саченко Владислав ИП-91 на языке программировании Python")
