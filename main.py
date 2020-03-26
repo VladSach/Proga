@@ -18,12 +18,6 @@ class LinkedList:
             self.head.prev = new
         self.head = new
 
-    def search(self, key):
-        current = self.head
-        while current and current.key != key:
-            current = current.next
-        return current
-
     def delete(self, node):
         if node.prev:
             node.prev.next = node.next
@@ -52,5 +46,10 @@ print("Заданий рядок слів, які відокремлюються
 print("Побудувати список відповідних слів. Поміняти місцями найдовше та найкоротше слово цього списку.")
 print("Надрукувати початковий і змінений списки.")
 
-first_line = Line('почему     снова такое  сложное задание Муха')
-first_line.splitting()
+list = Line(input('Введите строку: ')).splitting()  # создает массив со словами
+print(list)
+i = list.index(min(list, key=len))  # находит минимальное
+j = list.index(max(list, key=len))  # находит максимальное
+list[i], list[j] = list[j], list[i]  # меняет местами
+
+print(list)
