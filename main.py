@@ -7,6 +7,7 @@ class EndList:
 
     def change_pos(self):  # меняет местами
         self.list[self.shortest_word], self.list[self.longest_word] = self.list[self.longest_word], self.list[self.shortest_word]
+        return self.list
 
     def __del__(self):
         print('список потерт')
