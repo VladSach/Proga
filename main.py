@@ -1,30 +1,16 @@
-class ListNode:
-    def __init__(self, key, prev=None, _next=None):
-        self.key = key
-        self.next = _next
-        self.prev = prev
+class EndList:
 
-        def __del__(self):
-            print('узел удален')
+    def __init__(self, list):
+        self.list = list
 
+    def long_word(self):  # находит максимальное
+        longest_word = list.index(max(list, key=len))
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
+    def short_word(self):  # находит минимальное
+        shortest_word = list.index(min(list, key=len))
 
-    def insert(self, key):
-        new = ListNode(key, _next=self.head)
-        if self.head:
-            self.head.prev = new
-        self.head = new
-
-    def delete(self, node):
-        if node.prev:
-            node.prev.next = node.next
-        else:
-            self.head = node.next
-        if node.next:
-            node.next.prev = node.prev
+    def change_pos(self, longest_word, shortest_word):  # меняет местами
+        list[shortest_word], list[longest_word] = list[longest_word], list[shortest_word]
 
     def __del__(self):
         print('список потерт')
@@ -45,11 +31,11 @@ print("Вариант №22")
 print("Заданий рядок слів, які відокремлюються одне від одного будь-якою кількістю пробілів.")
 print("Побудувати список відповідних слів. Поміняти місцями найдовше та найкоротше слово цього списку.")
 print("Надрукувати початковий і змінений списки.")
+print("=================================")
 
-list = Line(input('Введите строку: ')).splitting()  # создает массив со словами
-print(list)
-i = list.index(min(list, key=len))  # находит минимальное
-j = list.index(max(list, key=len))  # находит максимальное
-list[i], list[j] = list[j], list[i]  # меняет местами
 
-print(list)
+list_first = Line(input('Введите строку: ')).splitting()  # создает массив со словами
+print('Начальный список: ', list_first)
+list_last = EndList(list_first)
+list_last.change_pos(list_last.long_word(), list_last.short_word())
+print("Конечный список: ", list_last)
